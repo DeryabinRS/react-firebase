@@ -8,6 +8,7 @@ import ResetPassword from "./pages/ResetPassword"
 import ProtectedRoute from "./components/Authentication/ProtectedRoute";
 
 function App() {
+  
   return (
     <div className="App">
       <Switch>
