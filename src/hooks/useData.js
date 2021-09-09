@@ -15,6 +15,5 @@ export const useData = (collectionName) => {
 		});
 		return () => unsub();
 	}, [collectionName]);
-	
 	return {docs}
 }

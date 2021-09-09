@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { db } from '../../utils/firebase' 
 import { 
-  Button, 
-  Tr,
-  Td,
-  Input
+	ButtonGroup,	
+	Button, 
+	Tr,
+	Td,
+	Input,
 } from "@chakra-ui/react";
 
 const Location = ({location}) => {
@@ -13,7 +14,7 @@ const Location = ({location}) => {
 
 	const [newLocation, setNewLocate] = useState({
 		name: location.name,
-		city: location.city,
+		population: location.population,
 		region: location.region
 	});
 
@@ -44,7 +45,7 @@ const Location = ({location}) => {
 			await db.collection('locations').doc(location.id)
 				.update({
 					name: newLocation.name,
-					city: newLocation.city,
+					population: newLocation.population,
 					region: newLocation.region
 				})
 		} catch (error) {
@@ -58,18 +59,18 @@ const Location = ({location}) => {
 				<Input value={newLocation.name} name="name" onChange={onChangeHandler}/>
 			</Td>
 			<Td>
-				<Input value={newLocation.city} name="city" onChange={onChangeHandler}/>
+				<Input value={newLocation.population} name="population" onChange={onChangeHandler}/>
 			</Td>
 			<Td>
 				<Input value={newLocation.region} name="region" onChange={onChangeHandler}/>
 			</Td>
 			<Td>
-			<Button
-				colorScheme="pink"
-				onClick={deleteLocation}
-			>
-				Delete
-			</Button>
+				<Button
+					colorScheme="red"
+					onClick={deleteLocation}
+				>
+					Delete
+				</Button>
 			</Td>
 		</Tr>
 	);
