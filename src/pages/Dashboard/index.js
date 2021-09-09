@@ -3,6 +3,7 @@ import { AuthContext } from "../../components/Authentication/AuthProvider";
 import { useData } from '../../hooks/useData'
 import Location from './Location';
 import { 
+  Container,
   Button, 
   Table,
   Thead,
@@ -16,8 +17,9 @@ const Dashboard = () => {
   const {docs: locations} = useData('locations')
 
    return (
-    <div>
+    <Container maxW="container.lg">
       <Button
+        colorScheme="pink"
         onClick={() => {
           logout();
         }}
@@ -43,7 +45,7 @@ const Dashboard = () => {
               }
           </Tbody>
       </Table>
-    </div>
+    </Container>
   );
 };
 

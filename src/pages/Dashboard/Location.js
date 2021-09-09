@@ -65,6 +65,7 @@ const Location = ({location}) => {
 			</Td>
 			<Td>
 			<Button
+				colorScheme="pink"
 				onClick={deleteLocation}
 			>
 				Delete
