@@ -4,7 +4,7 @@ import { db } from '../utils/firebase'
 export const useData = (collectionName) => {
 	const [docs, setDocs] = useState([])
 	useEffect(() => {
-		const unsub = db.collection(collectionName)
+		const unsub = db.collection(collectionName).orderBy('timestamp', 'desc')
 		.onSnapshot(snap => {
 			const documents = [];
 			snap.forEach(doc => {

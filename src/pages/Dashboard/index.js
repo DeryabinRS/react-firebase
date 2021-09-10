@@ -26,15 +26,15 @@ const Dashboard = () => {
       const unsub = db.collection('locations').add({
         name: "",
         population: "",
-        region: ""
-    })
-      console.log(unsub)
+        region: "",
+        timestamp: new Date().getTime().toString()
+      });
     }catch(error){
       console.log(error)
     }
   }
 
-   return (
+  return (
     <Container maxW="container.lg">
       <Button
         my={5}
@@ -45,34 +45,35 @@ const Dashboard = () => {
       >
         Logout
       </Button>
-      <Box>
-        <IconButton 
-          colorScheme="green" 
-          aria-label="Add" 
-          icon={<AddIcon />} 
-          float="right"
-          onClick={onClickHandlerAddRowToDB}
-        />
-      </Box>
-      <Table>
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Population</Th>
-            <Th>Region</Th>
-            <Th>Setting</Th>
-          </Tr>
-        </Thead>
-          <Tbody> 
-              {
-                locations.map(location => {
-                  return(
-                    <Location key={location.id} location={location}/>
-                  )
-                })
-              }
-          </Tbody>
-      </Table>
+        <Box borderWidth="1px" p="2" borderRadius="md">
+          <Box borderBottom="1px" p="2" borderColor="gray.200">
+            <Button 
+              colorScheme="green" 
+              aria-label="Add" 
+              leftIcon={<AddIcon />}
+              onClick={onClickHandlerAddRowToDB}
+            >Add location</Button>
+          </Box>
+          <Table>
+            <Thead>
+              <Tr>
+                <Th>Name</Th>
+                <Th>Population</Th>
+                <Th>Region</Th>
+                <Th>Setting</Th>
+              </Tr>
+            </Thead>
+              <Tbody> 
+                  {
+                    locations.map(location => {
+                      return(
+                        <Location key={location.id} location={location}/>
+                      )
+                    })
+                  }
+              </Tbody>
+          </Table>
+        </Box>
     </Container>
   );
 };
